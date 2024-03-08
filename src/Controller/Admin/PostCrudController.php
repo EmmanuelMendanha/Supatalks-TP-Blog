@@ -26,7 +26,7 @@ class PostCrudController extends AbstractCrudController
             ->setPageTitle('index', '📆 All posts')
             ->setEntityLabelInSingular('Post')
             ->setEntityLabelInPlural('Posts')
-            ->setSearchFields(['name'])
+            ->setSearchFields(['title'])
             ->setDefaultSort(['id' => 'DESC']);
     }
 

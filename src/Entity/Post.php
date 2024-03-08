@@ -27,7 +27,10 @@ class Post
     private ?bool $isPublished = null;
 
     #[ORM\ManyToOne(inversedBy: 'posts')]
-    private ?user $user_id = null;
+    #[ORM\JoinColumn(nullable: false)]
+    private ?User $author = null;
+
+   
 
     public function getId(): ?int
     {
@@ -82,15 +85,16 @@ class Post
         return $this;
     }
 
-    public function getUserId(): ?user
+    public function getAuthor(): ?User
     {
-        return $this->user_id;
+        return $this->author;
     }
 
-    public function setUserId(?user $user_id): static
+    public function setAuthor(?User $author): static
     {
-        $this->user_id = $user_id;
+        $this->author = $author;
 
         return $this;
     }
+
 } // Do not write anything after this line

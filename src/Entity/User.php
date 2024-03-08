@@ -35,13 +35,16 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 80, nullable: true)]
     private ?string $nickname = null;
 
-    #[ORM\OneToMany(targetEntity: Post::class, mappedBy: 'user_id')]
+    #[ORM\OneToMany(targetEntity: Post::class, mappedBy: 'author', orphanRemoval: true)]
     private Collection $posts;
 
     public function __construct()
     {
         $this->posts = new ArrayCollection();
     }
+
+    
+
 
     public function getId(): ?int
     {
@@ -142,7 +145,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         if (!$this->posts->contains($post)) {
             $this->posts->add($post);
-            $post->setUserId($this);
+            $post->setAuthor($this);
         }
 
         return $this;
@@ -152,11 +155,15 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         if ($this->posts->removeElement($post)) {
             // set the owning side to null (unless already changed)
-            if ($post->getUserId() === $this) {
-                $post->setUserId(null);
+            if ($post->getAuthor() === $this) {
+                $post->setAuthor(null);
             }
         }
 
         return $this;
     }
+
+
+
+
 } // Do not write anything after this line

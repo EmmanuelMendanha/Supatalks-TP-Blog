@@ -51,9 +51,9 @@ class PostCrudController extends AbstractCrudController
                 ->setLabel('📷 Image')
                 ->setHelp('The image of the post')
                 ->setUploadDir('public/uploads/speakers'),
-            AssociationField::new('user_id')
+            AssociationField::new('author')
                 ->hideOnIndex()
-                ->setLabel('👤 user_id')
+                ->setLabel('👤 author')
                 ->setHelp('Who posted this?')
                 ->setFormTypeOption('choice_label', 'nickname'),
             BooleanField::new('isPublished')

@@ -49,7 +49,8 @@ class PostCrudController extends AbstractCrudController
                 ->setHelp('The content of the post'),
             ImageField::new('image')->hideOnIndex()
                 ->setLabel('📷 Image')
-                ->setHelp('The image of the post'),
+                ->setHelp('The image of the post')
+                ->setUploadDir('public/uploads/speakers'),
             AssociationField::new('user_id')
                 ->setLabel('👤 user_id')
                 ->setHelp('Who posted this?')

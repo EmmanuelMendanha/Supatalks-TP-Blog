@@ -52,13 +52,14 @@ class PostCrudController extends AbstractCrudController
                 ->setHelp('The image of the post')
                 ->setUploadDir('public/uploads/speakers'),
             AssociationField::new('user_id')
+                ->hideOnIndex()
                 ->setLabel('👤 user_id')
                 ->setHelp('Who posted this?')
                 ->setFormTypeOption('choice_label', 'nickname'),
             BooleanField::new('isPublished')
                 ->setLabel('📅 Published')
                 ->setHelp('Is this post published?'),
-            
+
         ];
     }
 }

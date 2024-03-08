@@ -2,10 +2,11 @@
 
 namespace App\Controller;
 
+use App\Repository\PostRepository;
 use App\Repository\EventRepository;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class HomeController extends AbstractController
 {
@@ -18,6 +19,15 @@ class HomeController extends AbstractController
         return $this->render('home/index.html.twig', [
             'title' => 'Supatalks',
             'events' => $eventRepository->findAll(),
+        ]);
+    }
+    #[Route('/blog', name: 'Blogs')]
+    public function blog(
+        PostRepository $postRepository,
+    ): Response
+    {
+        return $this->render('home/blog.html.twig', [
+            'title' => $postRepository->findAll(),
         ]);
     }
 }

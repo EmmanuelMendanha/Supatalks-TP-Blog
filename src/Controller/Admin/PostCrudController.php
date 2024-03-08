@@ -8,9 +8,10 @@ use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
 use EasyCorp\Bundle\EasyAdminBundle\Field\FormField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
-use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
 
 class PostCrudController extends AbstractCrudController
 {
@@ -40,17 +41,17 @@ class PostCrudController extends AbstractCrudController
         return [
             FormField::addPanel('Post Information'),
             TextField::new('title')
-                ->setLabel('📝 title')
+                ->setLabel('📝 Title')
                 ->setHelp('The name of the title'),
             TextField::new('content')
                 ->hideOnIndex()
-                ->setLabel('📝 content')
+                ->setLabel('📝 Content')
                 ->setHelp('The content of the post'),
-            TextField::new('image')->hideOnIndex()
-                ->setLabel('📷 image')
+            ImageField::new('image')->hideOnIndex()
+                ->setLabel('📷 Image')
                 ->setHelp('The image of the post'),
             AssociationField::new('user_id')
-                ->setLabel('👤 nickname')
+                ->setLabel('👤 user_id')
                 ->setHelp('Who posted this?')
                 ->setFormTypeOption('choice_label', 'nickname'),
             BooleanField::new('isPublished')

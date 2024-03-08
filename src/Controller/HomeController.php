@@ -21,13 +21,4 @@ class HomeController extends AbstractController
             'events' => $eventRepository->findAll(),
         ]);
     }
-    #[Route('/blog', name: 'Blogs')]
-    public function blog(
-        PostRepository $postRepository,
-    ): Response
-    {
-        return $this->render('home/blog.html.twig', [
-            'title' => $postRepository->findAll(),
-        ]);
-    }
 }

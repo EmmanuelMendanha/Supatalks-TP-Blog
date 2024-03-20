@@ -6,7 +6,6 @@ use App\Entity\Post;
 use App\Entity\User;
 use App\Entity\Event;
 use App\Entity\Speaker;
-use Doctrine\ORM\EntityManager;
 use App\Repository\EventRepository;
 use App\Repository\SpeakerRepository;
 use Symfony\Component\HttpFoundation\Response;
